@@ -1,0 +1,47 @@
+{% extends "bootstrap/base.html" %}
+{% from "macros.html" import weather_row %}
+
+{% block styles %}
+    {{ super() }}
+    <style>
+        body { padding-top: 50px; }
+    </style>
+{% endblock %}
+
+{% block title %}Weather Averages for {{ city }}{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Weather</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Weather Averages</h1>
+        <h2>{{ city }}</h2>
+        <table class="table table-hover">
+            <tr>
+                <th>Month</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Rainfall</th>
+            </tr>
+            {% for month, data in weather.iteritems() %}
+                {{ weather_row(month,
+                               data["min"],
+                               data["max"],
+                               data["rain"],
+                               highlight["min"],
+                               highlight["max"],
+                               highlight["rain"]) }}
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+
+
