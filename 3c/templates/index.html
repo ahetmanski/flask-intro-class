@@ -1,0 +1,36 @@
+{% extends "bootstrap/base.html" %}
+{% from "bootstrap/wtf.html" import quick_form %}
+
+{% block title %}Hello Application{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <style xmlns="http://www.w3.org/1999/html">
+        body {padding-top: 70px;}
+    </style>
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for("index") }}">Hello</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {{ quick_form(form) }}
+            </div>
+        </div>
+        {% if name %}
+            <div style="padding-top: 50px">
+                <div class="well" style="text-align: center">
+                    <h2>Hello, {{ name }}!</h2>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
