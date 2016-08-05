@@ -6,16 +6,13 @@
         <br>
         {{ form.submit() }}
         {% if form.errors %}
-            <br>
-            <br>
-            <br>
-            <div class="alert alert-danger" role="alert">
-        {% endif %}
-        {% for error in form.name.errors %}
-            {{ error }}
-            <hr>
-        {% endfor %}
-        {% if form.errors %}
+            <div  style="padding-top: 100px;">
+                <div class="alert alert-danger" role="alert">
+            {% for error in form.name.errors %}
+                {{ error }}
+                <hr>
+            {% endfor %}
+                </div>
             </div>
         {% endif %}
         {{ form.hidden_tag() }}
