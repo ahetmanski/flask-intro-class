@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <form method="post" action="">
+        {{ form.name.label }}{{ form.name(size=16) }}
+        <br>
+        {{ form.submit() }}
+        {% if form.errors %}
+            <br>
+            <br>
+            <br>
+            <div class="alert alert-danger" role="alert">
+        {% endif %}
+        {% for error in form.name.errors %}
+            {{ error }}
+            <hr>
+        {% endfor %}
+        {% if form.errors %}
+            </div>
+        {% endif %}
+        {{ form.hidden_tag() }}
+    </form>
+    {% if name %}
+        <h1>Hello, {{ name }}!</h1>
+    {% endif %}
+{% endblock %}
