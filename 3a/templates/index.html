@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Greetings Site{% endblock %}
+
+{% block page_content %}
+    <form method="post" action="">
+        Name: <input type="text" name="name">
+        <input type="submit" value="Submit">
+    </form>
+    {% if name %}
+        <h1>Hello, {{ name }}!</h1>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "bootstrap/base.html" %}
+{% from "bootstrap/wtf.html" import quick_form %}
+
+{% block title %}Image application{% endblock %}
+
+{% block navbar %}
+    <div class="container-fluid">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <a class="navbar-brand" href="{{ url_for("index") }}">Image</a>
+        </nav>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="padding-top: 70px">
+        <div class="row">
+            <div class="col-md-4">
+                {{ quick_form(form) }}
+            </div>
+        </div>
+        {% if filename %}
+            <div style="padding-top: 50px">
+                <img src="{{ url_for("static", filename=filename) }}">
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
